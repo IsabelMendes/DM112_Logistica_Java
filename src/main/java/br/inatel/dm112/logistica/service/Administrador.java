@@ -17,6 +17,11 @@ public class Administrador {
     @Autowired
     private RepositorioPedido repositorioPedido;
 
+    @PostMapping(path = "/criarPedido")
+    public Pedido criarPedido(@RequestBody Pedido pedido) {
+        return repositorioPedido.save(pedido);
+    }
+
     @GetMapping(path = "/pedidosEntegues")
     public List<Pedido> consultarPedidosEntregues() {
         return repositorioPedido.findByStatusEntregaTrue();
